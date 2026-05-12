@@ -500,6 +500,9 @@
 </footer>
 
 <script>
+  history.scrollRestoration = 'manual';
+  window.onload = function() { window.scrollTo(0, 0); };
+
   function scrollTo(id) {
     const el = document.getElementById(id);
     if (!el) return;
