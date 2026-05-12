@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Siriwimol Daenngamjing — Portfolio</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --navy: #1E2D6B;
+    --blue: #4A6CF7;
+    --purple: #7C5CBF;
+    --cyan: #00BFCF;
+    --bg: #EEF4FF;
+    --bg2: #F3EEFF;
+    --card: #FFFFFF;
+    --text: #1E2D6B;
+    --body: #475569;
+    --muted: #94A3B8;
+    --border: #D1DBF0;
+    --lightblue: #EBF0FF;
+    --lightpurp: #F0EAFF;
+    --lightcyan: #E0F9FC;
+  }
+
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    scroll-behavior: smooth;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    background: rgba(238,244,255,0.92);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid var(--border);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem; height: 60px;
+  }
+  .nav-logo {
+    font-size: 13px; font-weight: 700; letter-spacing: 0.08em;
+    color: var(--cyan); text-transform: uppercase;
+  }
+  .nav-links { display: flex; gap: 2rem; }
+  .nav-links a {
+    font-size: 13px; color: var(--body); text-decoration: none;
+    letter-spacing: 0.04em; transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--blue); }
+
+  /* SECTIONS */
+  section { padding: 80px 0; }
+  .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
+
+  /* ── SLIDE 1: PROFILE ── */
+  #profile {
+    padding-top: 120px;
+    background: linear-gradient(135deg, #EEF4FF 0%, #F3EEFF 100%);
+    min-height: 100vh;
+    display: flex; align-items: center;
+  }
+  .profile-grid {
+    display: grid;
+    grid-template-columns: 320px 1fr;
+    gap: 0;
+    background: var(--card);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 20px 60px rgba(74,108,247,0.12);
+  }
+  .profile-left {
+    background: var(--navy);
+    padding: 3rem 2rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .profile-left::before {
+    content: '';
+    position: absolute; top: -60px; right: -60px;
+    width: 160px; height: 160px;
+    border-radius: 50%;
+    background: rgba(74,108,247,0.2);
+  }
+  .profile-left::after {
+    content: '';
+    position: absolute; bottom: 40px; left: -30px;
+    width: 90px; height: 90px;
+    border-radius: 50%;
+    background: rgba(0,191,207,0.15);
+  }
+  .portfolio-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+    color: var(--cyan); text-transform: uppercase; margin-bottom: 1.5rem;
+  }
+  .profile-name {
+    font-size: 2rem; font-weight: 800; color: #fff;
+    line-height: 1.2; margin-bottom: 1.8rem;
+  }
+  .role-chip {
+    display: block; padding: 0.5rem 1rem;
+    border-radius: 8px; font-size: 12px; font-weight: 700;
+    color: #fff; margin-bottom: 0.5rem; text-align: center;
+    letter-spacing: 0.03em;
+  }
+  .chip-blue { background: rgba(74,108,247,0.7); }
+  .chip-purple { background: rgba(124,92,191,0.7); }
+  .chip-cyan { background: rgba(0,191,207,0.7); }
+
+  .tools-label {
+    font-size: 9px; font-weight: 700; letter-spacing: 0.15em;
+    color: #94AECF; text-transform: uppercase;
+    margin-top: 2rem; margin-bottom: 1rem;
+  }
+  .tools-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 0.4rem; }
+  .tool-pill {
+    font-size: 11px; color: #DDEEFF;
+    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255,255,255,0.12);
+    border-radius: 6px; padding: 0.35rem 0.5rem;
+    text-align: center;
+  }
+
+  .profile-right { padding: 3rem 3rem 3rem 3.5rem; }
+  .section-eyebrow {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.18em;
+    color: var(--cyan); text-transform: uppercase; margin-bottom: 0.6rem;
+  }
+  .section-title {
+    font-size: 2.2rem; font-weight: 800; color: var(--navy);
+    line-height: 1.15; margin-bottom: 1.2rem;
+  }
+  .divider { height: 2px; background: var(--border); border-radius: 2px; margin-bottom: 1.4rem; }
+  .summary-text {
+    font-size: 15px; color: var(--body);
+    line-height: 1.75; margin-bottom: 2.5rem;
+  }
+
+  .strengths-label {
+    font-size: 10px; font-weight: 700; letter-spacing: 0.15em;
+    color: var(--cyan); text-transform: uppercase; margin-bottom: 1rem;
+  }
+  .strengths-grid {
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 0.6rem; margin-bottom: 2rem;
+  }
+  .strength-card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.6rem 0.8rem;
+    display: flex; align-items: center; gap: 0.5rem;
+    font-size: 13px; color: var(--body);
+    box-shadow: 0 2px 8px rgba(74,108,247,0.07);
+  }
+  .strength-bar {
+    width: 4px; height: 28px; border-radius: 2px; flex-shrink: 0;
+  }
+
+  .tagline-box {
+    background: var(--lightblue);
+    border-left: 4px solid var(--cyan);
+    border-radius: 0 8px 8px 0;
+    padding: 1rem 1.2rem;
+    font-size: 14px; color: var(--body); font-style: italic;
+  }
+
+  /* ── SLIDE 2: PLATFORM OPS ── */
+  #platform {
+    background: linear-gradient(160deg, #F4F7FF 60%, #EDE8FF 100%);
+  }
+  .slide-header { margin-bottom: 2.5rem; }
+  .slide-dot-line { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+  .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--blue); }
+  .dot-line { height: 2px; width: 200px; background: var(--border); border-radius: 2px; }
+
+  .top-stripe { height: 5px; background: var(--blue); border-radius: 0 0 3px 3px; }
+
+  .three-col { display: grid; grid-template-columns: 1.1fr 1fr 1fr; gap: 1.5rem; }
+
+  .col-card {
+    background: var(--card);
+    border-radius: 14px;
+    border: 1px solid var(--border);
+    overflow: hidden;
+    box-shadow: 0 8px 24px rgba(139,157,195,0.1);
+  }
+  .col-card-header {
+    padding: 0.85rem 1.2rem;
+    font-size: 11px; font-weight: 700; letter-spacing: 0.08em;
+    color: #fff; text-transform: uppercase;
+  }
+  .col-card-body { padding: 1.2rem; }
+
+  .resp-item {
+    display: flex; align-items: flex-start; gap: 0.55rem;
+    margin-bottom: 0.85rem; font-size: 13px; color: var(--body);
+    line-height: 1.5;
+  }
+  .resp-dot {
+    width: 7px; height: 7px; border-radius: 50%;
+    flex-shrink: 0; margin-top: 5px;
+  }
+
+  .approach-text {
+    font-size: 13.5px; color: var(--body); line-height: 1.75;
+    margin-bottom: 0;
+  }
+
+  .takeaway-item {
+    display: flex; align-items: flex-start; gap: 0.6rem;
+    margin-bottom: 0.9rem; font-size: 13px; color: var(--body); line-height: 1.55;
+  }
+  .takeaway-bar {
+    width: 4px; border-radius: 2px; flex-shrink: 0;
+    min-height: 36px;
+  }
+
+  .focus-grid { display: flex; flex-direction: column; gap: 0.75rem; }
+  .focus-card {
+    border-radius: 10px;
+    padding: 0.85rem 1rem;
+    border: 1px solid rgba(74,108,247,0.15);
+  }
+  .focus-card-title { font-size: 13px; font-weight: 700; margin-bottom: 0.2rem; }
+  .focus-card-sub { font-size: 12px; color: var(--body); }
+  .focus-bar { width: 4px; height: 100%; border-radius: 2px; }
+
+  /* ── SLIDE 3: EVENTS ── */
+  #events {
+    background: linear-gradient(160deg, #F2F6FF 60%, #EDE8FF 100%);
+  }
+  .events-top-stripe { height: 5px; background: var(--cyan); border-radius: 0 0 3px 3px; }
+
+  .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.2rem; }
+
+  .project-tag {
+    display: flex; align-items: center; gap: 0.6rem;
+    padding: 0.6rem 0.85rem;
+    border-radius: 8px;
+    font-size: 13px; color: var(--navy);
+    margin-bottom: 0.5rem;
+    border: 1px solid;
+  }
+  .project-tag-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+
+  .challenge-bar {
+    background: var(--lightcyan);
+    border-left: 4px solid var(--cyan);
+    border-radius: 0 10px 10px 0;
+    padding: 0.9rem 1.2rem;
+    font-size: 13px; color: #1A7A8A; font-style: italic;
+  }
+
+  /* FOOTER */
+  footer {
+    text-align: center; padding: 3rem;
+    background: var(--navy); color: rgba(255,255,255,0.4);
+    font-size: 12px; letter-spacing: 0.05em;
+  }
+  footer strong { color: rgba(255,255,255,0.75); }
+
+  /* PAGE INDICATOR */
+  .page-num {
+    position: absolute; bottom: 2rem; right: 2.5rem;
+    font-size: 12px; color: var(--muted); font-weight: 700;
+    letter-spacing: 0.08em;
+  }
+
+  /* Scroll animations */
+  .fade-in {
+    opacity: 0; transform: translateY(24px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: translateY(0); }
+
+  @media (max-width: 900px) {
+    .profile-grid { grid-template-columns: 1fr; }
+    .three-col, .two-col { grid-template-columns: 1fr; }
+    .strengths-grid { grid-template-columns: 1fr 1fr; }
+    nav { padding: 0 1.5rem; }
+    .container { padding: 0 1.5rem; }
+    .profile-right { padding: 2rem; }
+    .nav-links { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <span class="nav-logo">Portfolio</span>
+  <div class="nav-links">
+    <a href="#profile">Profile</a>
+    <a href="#platform">Platform Ops</a>
+    <a href="#events">Events</a>
+  </div>
+</nav>
+
+<!-- ══ SLIDE 1: PROFILE ══ -->
+<section id="profile">
+  <div class="container">
+    <div class="profile-grid fade-in">
+      <!-- LEFT -->
+      <div class="profile-left">
+        <div class="portfolio-label">Portfolio · 2026</div>
+        <div class="profile-name">Siriwimol<br>Daenngamjing</div>
+
+        <span class="role-chip chip-blue">Project Coordination</span>
+        <span class="role-chip chip-purple">Platform Operations</span>
+        <span class="role-chip chip-cyan">UAT &amp; Workflow Support</span>
+
+        <div class="tools-label">Tools &amp; Technologies</div>
+        <div class="tools-grid">
+          <div class="tool-pill">Google Sheets</div>
+          <div class="tool-pill">CMS Systems</div>
+          <div class="tool-pill">Power Apps</div>
+          <div class="tool-pill">Postman</div>
+          <div class="tool-pill">GTM</div>
+          <div class="tool-pill">AI Tools</div>
+        </div>
+      </div>
+
+      <!-- RIGHT -->
+      <div class="profile-right">
+        <div class="section-eyebrow">About</div>
+        <div class="section-title">Profile Summary</div>
+        <div class="divider" style="width:60%; margin-bottom:1.4rem;"></div>
+
+        <p class="summary-text">
+          Experienced in workflow coordination, platform operations, and supporting operational processes within Travel Tech and event-related systems. Worked closely with developers, operations teams, and partners to support workflow execution, issue coordination, and platform-related operations.
+        </p>
+
+        <div class="strengths-label">Core Strengths</div>
+        <div class="strengths-grid">
+          <div class="strength-card"><div class="strength-bar" style="background:#4A6CF7;"></div>Workflow Coordination</div>
+          <div class="strength-card"><div class="strength-bar" style="background:#7C5CBF;"></div>UAT Testing</div>
+          <div class="strength-card"><div class="strength-bar" style="background:#00BFCF;"></div>Platform Operations</div>
+          <div class="strength-card"><div class="strength-bar" style="background:#4A6CF7;"></div>CMS Management</div>
+          <div class="strength-card"><div class="strength-bar" style="background:#7C5CBF;"></div>Cross-functional Comm.</div>
+          <div class="strength-card"><div class="strength-bar" style="background:#00BFCF;"></div>Operational Support</div>
+          <div class="strength-card"><div class="strength-bar" style="background:#4A6CF7;"></div>Ticketing Systems</div>
+        </div>
+
+        <div class="tagline-box">
+          Seeking PM / Operations roles — bringing hands-on experience in workflow coordination, platform operations, and cross-functional team support.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 2: PLATFORM OPS ══ -->
+<section id="platform">
+  <div class="container">
+    <div class="slide-header fade-in">
+      <div class="section-eyebrow">Experience</div>
+      <div class="section-title">Platform Operations<br>&amp; Coordination</div>
+      <div class="slide-dot-line"><div class="dot"></div><div class="dot-line"></div></div>
+    </div>
+
+    <div class="three-col">
+
+      <!-- Responsibilities -->
+      <div class="col-card fade-in">
+        <div class="col-card-header" style="background:#4A6CF7;">Responsibilities</div>
+        <div class="col-card-body">
+          <div class="resp-item"><div class="resp-dot" style="background:#4A6CF7;"></div>Coordinated workflows between developers, operations, customer support, and business partners</div>
+          <div class="resp-item"><div class="resp-dot" style="background:#4A6CF7;"></div>Verified booking information, pricing, schedules, and package details before publishing</div>
+          <div class="resp-item"><div class="resp-dot" style="background:#4A6CF7;"></div>Managed and updated operational content through CMS systems</div>
+          <div class="resp-item"><div class="resp-dot" style="background:#4A6CF7;"></div>Supported SEO-related platform content updates and information management</div>
+          <div class="resp-item"><div class="resp-dot" style="background:#4A6CF7;"></div>Followed up on system issues and coordinated troubleshooting with developers</div>
+          <div class="resp-item"><div class="resp-dot" style="background:#4A6CF7;"></div>Coordinated operational updates with external partners</div>
+          <div class="resp-item"><div class="resp-dot" style="background:#4A6CF7;"></div>Assisted in monitoring workflow accuracy during campaigns</div>
+          <div class="resp-item" style="margin-bottom:0;"><div class="resp-dot" style="background:#4A6CF7;"></div>Supported timeline follow-ups to ensure operational tasks were completed as planned</div>
+        </div>
+      </div>
+
+      <!-- Workflow + Takeaways -->
+      <div style="display:flex; flex-direction:column; gap:1.5rem;">
+        <div class="col-card fade-in">
+          <div class="col-card-header" style="background:#7C5CBF;">Workflow Approach</div>
+          <div class="col-card-body">
+            <p class="approach-text">Before escalating issues, verified whether problems were caused by workflow limitations, system-related issues, or user-side errors. Reviewed existing workflows before proposing new solutions and coordinated possible approaches with developers and internal teams.</p>
+          </div>
+        </div>
+
+        <div class="col-card fade-in">
+          <div class="col-card-header" style="background:#00BFCF;">Key Takeaways</div>
+          <div class="col-card-body">
+            <div class="takeaway-item"><div class="takeaway-bar" style="background:#00BFCF;"></div>Improved workflow analysis and cross-functional coordination skills</div>
+            <div class="takeaway-item"><div class="takeaway-bar" style="background:#00BFCF;"></div>Learned how operational workflows directly affect customer experience and platform usability</div>
+            <div class="takeaway-item" style="margin-bottom:0;"><div class="takeaway-bar" style="background:#00BFCF;"></div>Gained experience working between technical teams, operations, and external partners</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Focus Areas -->
+      <div class="fade-in">
+        <div class="strengths-label" style="margin-bottom:1rem;">Focus Areas</div>
+        <div class="focus-grid">
+          <div class="focus-card" style="background:#EBF0FF; border-color:rgba(74,108,247,0.25);">
+            <div class="focus-card-title" style="color:#4A6CF7;">Workflow Coordination</div>
+            <div class="focus-card-sub">Cross-team &amp; developer alignment</div>
+          </div>
+          <div class="focus-card" style="background:#F0EAFF; border-color:rgba(124,92,191,0.25);">
+            <div class="focus-card-title" style="color:#7C5CBF;">CMS Operations</div>
+            <div class="focus-card-sub">Content, pricing &amp; package management</div>
+          </div>
+          <div class="focus-card" style="background:#E0F9FC; border-color:rgba(0,191,207,0.25);">
+            <div class="focus-card-title" style="color:#00BFCF;">Issue Coordination</div>
+            <div class="focus-card-sub">Triage, follow-up &amp; resolution support</div>
+          </div>
+          <div class="focus-card" style="background:#EBF0FF; border-color:rgba(74,108,247,0.25);">
+            <div class="focus-card-title" style="color:#4A6CF7;">Platform Validation</div>
+            <div class="focus-card-sub">Booking &amp; workflow accuracy checks</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══ SLIDE 3: EVENTS ══ -->
+<section id="events">
+  <div class="container">
+    <div class="slide-header fade-in">
+      <div class="section-eyebrow">Projects</div>
+      <div class="section-title">Campaign &amp; Live<br>Event Operations</div>
+      <div class="slide-dot-line"><div class="dot" style="background:var(--cyan);"></div><div class="dot-line"></div></div>
+    </div>
+
+    <div class="two-col">
+
+      <!-- Campaign -->
+      <div class="col-card fade-in">
+        <div class="col-card-header" style="background:#4A6CF7;">Campaign Operations</div>
+        <div class="col-card-body">
+          <div class="strengths-label" style="color:#4A6CF7;">Projects</div>
+          <div class="project-tag" style="background:#EBF0FF; border-color:rgba(74,108,247,0.2);">
+            <div class="project-tag-dot" style="background:#4A6CF7;"></div>
+            Muay Thai Soft Power 2024
+          </div>
+          <div class="project-tag" style="background:#EBF0FF; border-color:rgba(74,108,247,0.2);">
+            <div class="project-tag-dot" style="background:#4A6CF7;"></div>
+            Awesome Muay Thai – Krabi
+          </div>
+          <div class="project-tag" style="background:#EBF0FF; border-color:rgba(74,108,247,0.2);">
+            <div class="project-tag-dot" style="background:#4A6CF7;"></div>
+            Awesome Muay Thai to Amazing Thailand (Dubai) 2024–2025
+          </div>
+
+          <div class="strengths-label" style="color:#4A6CF7; margin-top:1.2rem;">Responsibilities</div>
+          <div class="takeaway-item"><div class="takeaway-bar" style="background:#4A6CF7; min-height:30px;"></div>Coordinating platform updates and operational information</div>
+          <div class="takeaway-item"><div class="takeaway-bar" style="background:#4A6CF7; min-height:30px;"></div>Supporting workflow execution during campaign periods</div>
+          <div class="takeaway-item"><div class="takeaway-bar" style="background:#4A6CF7; min-height:30px;"></div>Coordinating with internal teams and external partners</div>
+          <div class="takeaway-item" style="margin-bottom:0;"><div class="takeaway-bar" style="background:#4A6CF7; min-height:30px;"></div>Managing campaign-related operational processes and updates</div>
+        </div>
+      </div>
+
+      <!-- Live Events -->
+      <div class="col-card fade-in">
+        <div class="col-card-header" style="background:#7C5CBF;">Live Event Operations</div>
+        <div class="col-card-body">
+          <div class="strengths-label" style="color:#7C5CBF;">Events</div>
+          <div class="project-tag" style="background:#F0EAFF; border-color:rgba(124,92,191,0.2);">
+            <div class="project-tag-dot" style="background:#7C5CBF;"></div>
+            Amazing Muay Thai Masterclass (Brazil, Scotland, France)
+          </div>
+          <div class="project-tag" style="background:#F0EAFF; border-color:rgba(124,92,191,0.2);">
+            <div class="project-tag-dot" style="background:#7C5CBF;"></div>
+            Amazing Muay Thai – Chiang Mai
+          </div>
+
+          <div class="strengths-label" style="color:#7C5CBF; margin-top:1.2rem;">Responsibilities</div>
+          <div class="takeaway-item"><div class="takeaway-bar" style="background:#7C5CBF; min-height:30px;"></div>Planning multiple check-in workflows: QR scan, code entry, manual search</div>
+          <div class="takeaway-item"><div class="takeaway-bar" style="background:#7C5CBF; min-height:30px;"></div>Preparing operational guidance and user manuals for event teams</div>
+          <div class="takeaway-item"><div class="takeaway-bar" style="background:#7C5CBF; min-height:30px;"></div>Monitoring ticketing and check-in systems during live operations</div>
+          <div class="takeaway-item"><div class="takeaway-bar" style="background:#7C5CBF; min-height:30px;"></div>Coordinating with developers to ensure workflow readiness</div>
+          <div class="takeaway-item" style="margin-bottom:0;"><div class="takeaway-bar" style="background:#7C5CBF; min-height:30px;"></div>Supporting troubleshooting processes during live events</div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Challenge callout -->
+    <div class="challenge-bar fade-in">
+      <strong style="color:#0F6E56;">Operational Challenge:</strong> Worked with international ticketing workflows involving different payment conditions, currencies, and operational requirements across multiple countries and event environments.
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <strong>Siriwimol Daenngamjing</strong> · Project Coordination · Platform Operations · UAT &amp; Workflow Support
+</footer>
+
+<script>
+  const obs = new IntersectionObserver((entries) => {
+    entries.forEach((e, i) => {
+      if (e.isIntersecting) {
+        setTimeout(() => e.target.classList.add('visible'), i * 80);
+      }
+    });
+  }, { threshold: 0.1 });
+  document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+</script>
+</body>
+</html>
