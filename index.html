@@ -294,9 +294,9 @@
 <nav>
   <span class="nav-logo">Portfolio</span>
   <div class="nav-links">
-    <a href="#profile">Profile</a>
-    <a href="#platform">Platform Ops</a>
-    <a href="#events">Events</a>
+    <a href="#profile" onclick="scrollTo('profile');return false;">Profile</a>
+    <a href="#platform" onclick="scrollTo('platform');return false;">Platform Ops</a>
+    <a href="#events" onclick="scrollTo('events');return false;">Events</a>
   </div>
 </nav>
 
@@ -500,6 +500,14 @@
 </footer>
 
 <script>
+  function scrollTo(id) {
+    const el = document.getElementById(id);
+    if (!el) return;
+    const navHeight = 60;
+    const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight;
+    window.scrollTo({ top: top, behavior: 'smooth' });
+  }
+
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
