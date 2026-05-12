@@ -38,7 +38,7 @@
     background: rgba(238,244,255,0.92);
     backdrop-filter: blur(12px);
     border-bottom: 1px solid var(--border);
-    display: flex; align-items: center; justify-content: space-between;
+    display: flex; align-items: flex-start; justify-content: space-between;
     padding: 0 3rem; height: 60px;
   }
   .nav-logo {
@@ -58,10 +58,10 @@
 
   /* ── SLIDE 1: PROFILE ── */
   #profile {
-    padding-top: 120px;
+    padding-top: 80px;
     background: linear-gradient(135deg, #EEF4FF 0%, #F3EEFF 100%);
     min-height: 100vh;
-    display: flex; align-items: center;
+    display: flex; align-items: flex-start;
   }
   .profile-grid {
     display: grid;
@@ -152,7 +152,7 @@
     border: 1px solid var(--border);
     border-radius: 8px;
     padding: 0.6rem 0.8rem;
-    display: flex; align-items: center; gap: 0.5rem;
+    display: flex; align-items: flex-start; gap: 0.5rem;
     font-size: 13px; color: var(--body);
     box-shadow: 0 2px 8px rgba(74,108,247,0.07);
   }
@@ -173,7 +173,7 @@
     background: linear-gradient(160deg, #F4F7FF 60%, #EDE8FF 100%);
   }
   .slide-header { margin-bottom: 2.5rem; }
-  .slide-dot-line { display: flex; align-items: center; gap: 0.75rem; margin-bottom: 0.5rem; }
+  .slide-dot-line { display: flex; align-items: flex-start; gap: 0.75rem; margin-bottom: 0.5rem; }
   .dot { width: 12px; height: 12px; border-radius: 50%; background: var(--blue); }
   .dot-line { height: 2px; width: 200px; background: var(--border); border-radius: 2px; }
 
@@ -238,7 +238,7 @@
   .two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; margin-bottom: 1.2rem; }
 
   .project-tag {
-    display: flex; align-items: center; gap: 0.6rem;
+    display: flex; align-items: flex-start; gap: 0.6rem;
     padding: 0.6rem 0.85rem;
     border-radius: 8px;
     font-size: 13px; color: var(--navy);
