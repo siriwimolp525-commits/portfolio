@@ -53,12 +53,12 @@
   .nav-links a:hover { color: var(--blue); }
 
   /* SECTIONS */
-  section { padding: 80px 0; scroll-margin-top: 60px; }
+  section { padding: 80px 0; }
   .container { max-width: 1100px; margin: 0 auto; padding: 0 3rem; }
 
   /* ── SLIDE 1: PROFILE ── */
   #profile {
-    padding-top: 140px;
+    padding-top: 80px;
     background: linear-gradient(135deg, #EEF4FF 0%, #F3EEFF 100%);
     min-height: 100vh;
     display: flex; align-items: flex-start;
@@ -294,9 +294,9 @@
 <nav>
   <span class="nav-logo">Portfolio</span>
   <div class="nav-links">
-    <a href="#profile" onclick="scrollTo('profile');return false;">Profile</a>
-    <a href="#platform" onclick="scrollTo('platform');return false;">Platform Ops</a>
-    <a href="#events" onclick="scrollTo('events');return false;">Events</a>
+    <a href="#profile">Profile</a>
+    <a href="#platform">Platform Ops</a>
+    <a href="#events">Events</a>
   </div>
 </nav>
 
@@ -344,9 +344,8 @@
           <div class="strength-card"><div class="strength-bar" style="background:#00BFCF;"></div>Operational Support</div>
           <div class="strength-card"><div class="strength-bar" style="background:#4A6CF7;"></div>Ticketing Systems</div>
         </div>
-
-        <div class="tagline-box">
-          Seeking PM / Operations roles — bringing hands-on experience in workflow coordination, platform operations, and cross-functional team support.
+      <div class="tagline-box">
+          Currently experienced in coordinating between customers, partners, and web development teams — responsible for gathering user requirements, analyzing issues, and supporting platform improvements to enhance user experience and operational efficiency.
         </div>
       </div>
     </div>
@@ -500,17 +499,6 @@
 </footer>
 
 <script>
-  history.scrollRestoration = 'manual';
-  window.onload = function() { window.scrollTo(0, 0); };
-
-  function scrollTo(id) {
-    const el = document.getElementById(id);
-    if (!el) return;
-    const navHeight = 60;
-    const top = el.getBoundingClientRect().top + window.pageYOffset - navHeight;
-    window.scrollTo({ top: top, behavior: 'smooth' });
-  }
-
   const obs = new IntersectionObserver((entries) => {
     entries.forEach((e, i) => {
       if (e.isIntersecting) {
